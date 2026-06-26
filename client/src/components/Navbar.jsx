@@ -64,10 +64,10 @@ export default function Navbar() {
                   {user.avatar ? (
                     <img src={user.avatar} alt="" />
                   ) : (
-                    <span>{user.name.charAt(0).toUpperCase()}</span>
+                    <span>{user.name?.charAt(0)?.toUpperCase() || '?'}</span>
                   )}
                 </div>
-                <span className="nav-username">{user.name}</span>
+                <span className="nav-username">{user.name || 'User'}</span>
               </Link>
               <button className="nav-logout" onClick={handleLogout}>
                 Sign Out

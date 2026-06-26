@@ -77,7 +77,7 @@ export default function Dashboard() {
               <img src={avatarSrc} alt="Avatar" className="avatar-img" />
             ) : (
               <div className="avatar-placeholder">
-                {user.name?.charAt(0).toUpperCase()}
+                {user.name?.charAt(0)?.toUpperCase() || '?'}
               </div>
             )}
             <div className="avatar-ring" />
