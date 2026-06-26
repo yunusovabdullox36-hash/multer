@@ -39,4 +39,16 @@ app.get('/', (req, res) => {
 // 5. Ishga tushirish
 app.listen(PORT, () => {
   console.log(`✅ Server http://localhost:${PORT} da ishga tushdi`);
+
+  // Render free instance uxlab qolmasligi uchun keep-alive
+  const baseUrl = process.env.RENDER_EXTERNAL_URL || process.env.SELF_URL;
+  if (baseUrl) {
+    setInterval(async () => {
+      try {
+        await fetch(`${baseUrl}/`);
+        console.log('💓 Keep-alive ping yuborildi');
+      } catch {}
+    }, 10000);
+    console.log(`⏰ Keep-alive yoqildi (10 soniya) → ${baseUrl}`);
+  }
 });
